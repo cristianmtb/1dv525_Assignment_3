@@ -1,12 +1,13 @@
 import React from "react";
+import App from "../models/App";
 import LiveChat from "./liveChat/LiveChat";
 
 interface IProps {
-    appID: number;
+    app: App;
 }
-export default class App extends React.Component<IProps> {
+export default class AppWindow extends React.Component<IProps> {
     public render() {
-        switch (this.props.appID) {
+        switch (this.props.app.appID) {
             case 1:
                 return(
                     <LiveChat/>
@@ -19,4 +20,5 @@ export default class App extends React.Component<IProps> {
                 );
         }
     }
+
 }

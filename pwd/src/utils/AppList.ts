@@ -1,9 +1,10 @@
+import App from "../models/App";
 
-const appList: number[] = new Array<number>();
+const appList: App[] = new Array<App>();
 
 export function addApp(appID: number) {
 
-    appList.push(appID);
+    appList.push(new App(appID));
 }
 
 export function getAppList() {

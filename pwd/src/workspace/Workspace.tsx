@@ -1,11 +1,11 @@
 import React from "react";
 
+import AppWindow from "../apps/App";
+import App from "../models/App";
 import "./Workspace.css";
-import { getAppList } from "../utils/AppList";
-import App from "../apps/App";
 
 interface IProps {
-    appList: number[];
+    appList: App[];
 }
 
 export default class Workspace extends React.Component<IProps> {
@@ -17,9 +17,8 @@ export default class Workspace extends React.Component<IProps> {
         return(
             <div className="workspace">
                 {
-                    this.props.appList.map((item)=>(
-                        <App appID={item}>
-                        </App>
+                    this.props.appList.map((item) => (
+                        <AppWindow app={item}/>
                     ))
                 }
             </div>

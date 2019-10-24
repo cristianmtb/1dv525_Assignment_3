@@ -1,5 +1,7 @@
 .workspace {
     background-color: #282034;
-    height:95vh;
-    width: 100vw;
-  }
+    max-height: 95%;
+    max-width: 100%;
+    min-height: 95%;
+    min-width: 100%;
+}

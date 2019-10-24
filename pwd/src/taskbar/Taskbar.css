@@ -1,5 +1,12 @@
 .taskbar{
-    height: 5vh;
-    width: 100vw;
-    background-color: aliceblue;
+    max-height: 5%;
+    max-width: 100%;
+    min-height: 5%;
+    min-width: 100%;
+    background-color: darkblue;
+    flex-direction: row;
+}
+.start-button{
+    height:100%;
+    width:5%;
 }
