@@ -1,0 +1,12 @@
+.AppWindow {
+    min-height:40%;
+    min-width:20%;
+    border: 3px solid grey;
+
+    background-color: antiquewhite;
+ }   
+.TitleBar{
+    height:10%;
+    width:100;
+    background:rgb(39, 39, 39);
+}
