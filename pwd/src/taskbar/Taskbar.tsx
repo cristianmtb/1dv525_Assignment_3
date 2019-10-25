@@ -8,6 +8,8 @@ interface IProps {
 
 export default class Taskbar extends React.Component<IProps> {
 
+    public PID: number = 0;
+
     public render() {
         return(
             <div className="taskbar">
@@ -20,7 +22,7 @@ export default class Taskbar extends React.Component<IProps> {
         );
     }
     private openApp(app: number) {
-        addApp(app);
+        addApp(app, this.PID++, this.props.openAppCallback);
         this.props.openAppCallback();
     }
 }
