@@ -9,10 +9,6 @@ interface IProps {
 }
 
 export default class Workspace extends React.Component<IProps> {
-
-    constructor(props: IProps) {
-        super(props);
-    }
     public render() {
         return(
             <div className="workspace">

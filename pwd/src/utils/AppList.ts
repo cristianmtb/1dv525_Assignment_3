@@ -11,7 +11,7 @@ export function getAppList() {
 }
 
 export function closeApp(PID: number) {
-    const index = appList.findIndex((app) => app.PID == PID);
+    const index = appList.findIndex((app) => app.PID === PID);
     if (index > -1) {
         appList[index].deleteCallback();
         appList.splice(index, 1);

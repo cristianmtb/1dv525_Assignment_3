@@ -1,9 +1,9 @@
 import React from "react";
-import Draggable from "react-draggable";
 import App from "../models/App";
 import {closeApp} from "../utils/AppList";
-import LiveChat from "./liveChat/LiveChat";
 import "./App.css";
+import Draggable from "./Draggable";
+import LiveChat from "./liveChat/LiveChat";
 
 interface IProps {
     app: App;
@@ -13,7 +13,7 @@ export default class AppWindow extends React.Component<IProps> {
         switch (this.props.app.appID) {
             case 1:
                 return (
-                    <Draggable bounds="parent" defaultPosition={{ x: 0, y: 0 }}>
+                    <Draggable initialX={0} initialY={0}>
                         <div className="w">
                             <div className="AppWindow">
                                 <div className="TitleBar">
@@ -28,7 +28,7 @@ export default class AppWindow extends React.Component<IProps> {
                 );
             case 2:
                 return (
-                    <Draggable bounds="parent" defaultPosition={{ x: 0, y: 0 }}>
+                    <Draggable initialX={0} initialY={0}>
                         <div className="AppWindow">
                             <div className="TitleBar">
                                 <button onClick={() => closeApp(this.props.app.PID)}>Hell</button>
@@ -43,9 +43,9 @@ export default class AppWindow extends React.Component<IProps> {
                 );
             case 3:
                 return (
-                    <Draggable bounds="parent" defaultPosition={{ x: 0, y: 0 }}>
+                    <Draggable initialX={0} initialY={0}>
                         <div className="AppWindow">
-                            <div className="TitleBar">  
+                            <div className="TitleBar">
                                 <button onClick={() => closeApp(this.props.app.PID)}>Hell</button>
                             </div>
                             <div className="Content">
@@ -56,7 +56,7 @@ export default class AppWindow extends React.Component<IProps> {
                 );
             case 4:
                 return (
-                    <Draggable bounds="parent" defaultPosition={{ x: 0, y: 0 }}>
+                    <Draggable initialX={0} initialY={0}>
                         <div className="AppWindow">
                             <div className="TitleBar">
                                 <button onClick={() => closeApp(this.props.app.PID)}>Hell</button>

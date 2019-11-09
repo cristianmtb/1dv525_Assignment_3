@@ -25,7 +25,6 @@ export default class Desktop extends React.Component {
     }
 
     public reload() {
-       console.log("henlo");
        this.setState({
            appList: getAppList(),
        });
