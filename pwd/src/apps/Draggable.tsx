@@ -3,14 +3,21 @@ import React from "react";
 interface IProps {
     initialX: number;
     initialY: number;
+    initialZ: number;
+    limits?:{
+        top:number;
+        left:number;
+        bottom:number;
+        right:number;
+    }
 }
 
 export default class Draggable extends React.Component<IProps> {
 
     public myRef: any;
-
+    
     public state = {
-        pos: { x: this.props.initialX, y: this.props.initialY },
+        pos: { x: this.props.initialX, y: this.props.initialY, z: this.props.initialZ },
         dragging: false,
         rel: {
             x: 0,
@@ -36,13 +43,11 @@ export default class Draggable extends React.Component<IProps> {
         }
     }
 
-    public componentDidMount() {
-    }
-
     public onMouseDown(e: any) {
         if (e.button !== 0) { return; }
         const pos = e.target.getBoundingClientRect();
         this.setState({
+
             dragging: true,
             rel: {
                 x: e.pageX - pos.left,
@@ -76,7 +81,7 @@ export default class Draggable extends React.Component<IProps> {
             <div
                 ref={this.myRef}
                 onMouseDown={this.onMouseDown}
-                style={{position: "absolute", left: this.state.pos.x + "px", top: this.state.pos.y + "px" }}
+                style={{position: "absolute", left: this.state.pos.x + "px", top: this.state.pos.y + "px", zIndex: this.state.pos.z }}
             >
                 {this.props.children}
             </div>

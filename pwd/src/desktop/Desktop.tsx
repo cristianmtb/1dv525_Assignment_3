@@ -19,7 +19,7 @@ export default class Desktop extends React.Component {
 
             <div className="desktop">
                 <Workspace appList={this.state.appList}/>
-                <Taskbar openAppCallback={this.reload}/>
+                <Taskbar openAppCallback={() => this.reload()}/>
             </div>
         );
     }
