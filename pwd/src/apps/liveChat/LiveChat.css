@@ -1,0 +1,44 @@
+.username-form-input{
+    color:black;
+}
+
+.message-list{
+    min-height:30vh;
+    max-height:30vh;
+    overflow-y: scroll;
+}
+
+.message{
+    padding:2px;
+    overflow:clip;
+    background-color:grey;
+    border: 1px solid rgb(39, 39, 39);
+
+}
+.message-from{
+    color:lightgrey;
+    display:flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.message-body{
+    color:white;
+    overflow-wrap:break-word;
+    word-break: break-all;
+    hyphens: auto;
+}
+
+.send-form{
+    height:7vh;
+    width:20vw;
+    display:flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+textarea{
+    width:15vw;
+    height:5vh;
+}

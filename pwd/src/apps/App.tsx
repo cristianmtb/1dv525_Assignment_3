@@ -1,8 +1,8 @@
 import React from "react";
 import App from "../models/App";
 import { closeApp } from "../utils/AppList";
-import "./App.css";
 import Draggable from "../utils/Draggable";
+import "./App.css";
 import LiveChat from "./liveChat/LiveChat";
 import MemoryGame from "./memoryGame/MemoryGame";
 

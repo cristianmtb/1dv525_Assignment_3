@@ -1,34 +1,57 @@
 import React from "react";
+import UsernameForm from "./components/UsernameForm";
 import "./LiveChat.css";
+import LiveChatLogic from "./LiveChatLogic";
+
+import MessageListView from "./components/MessagListView";
+import MessageSend from "./components/MessageSend";
 
 export default class LiveChat extends React.Component {
 
-    ws = new WebSocket("ws://vhost3.lnu.se:20080/socket/");
-    apiKey = "eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd";
+    public chat = new LiveChatLogic(() => this.receiveMessage());
 
-    state = {
-        username:this.getUserName(),
+    public state = {
+        username: this.chat.getUserName(),
+        messageList: this.chat.getMessageList(),
+    };
 
+    constructor(props: any) {
+        super(props);
+        this.setUserName = this.setUserName.bind(this);
+        this.sendMessage = this.sendMessage.bind(this);
     }
 
     public render() {
-        if(this.state.username === "") return this.setUserName()
-        return(
-            <div>
-                Live Chat
-            </div>
-        )
+        if (this.state.username === "") { return <UsernameForm setUsernameCallback={this.setUserName} />; }
+        else {
+            return (
+                <div>
+                    <MessageListView messageList={this.state.messageList}></MessageListView>
+                    <MessageSend sendCallback={this.sendMessage}></MessageSend>
+                </div>
+            );
+        }
     }
 
-    private getUserName():String{
-        return "";
+    public receiveMessage() {
+       this.setState({
+           messageList:this.chat.getMessageList(),
+       })
     }
-    private setUserName(){
-        return(
-            <div>
-                setusername
-            </div>
-        )
+
+    public sendMessage(message:String) {
+        this.chat.send(message);
+    }
+
+    private getUserName() {
+        this.setState({
+            username: this.chat.getUserName(),
+        });
+    }
+
+    private setUserName(username: String) {
+        this.chat.setUserName(username);
+        this.getUserName();
     }
 
 }

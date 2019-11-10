@@ -58,7 +58,6 @@ export default class Draggable extends React.Component<IProps> {
             },
         });
         e.stopPropagation();
-        e.preventDefault();
     }
 
     public onMouseUp(e: Event) {

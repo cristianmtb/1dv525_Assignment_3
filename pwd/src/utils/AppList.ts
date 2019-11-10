@@ -1,6 +1,6 @@
 import App from "../models/App";
 
-const appList: App[] = new Array<App>();
+let appList: App[] = new Array<App>();
 
 export function addApp(appID: number, PID: number , deleteCallback: any) {
     appList.push(new App(appID, PID, deleteCallback));
