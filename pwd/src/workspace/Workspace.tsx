@@ -7,7 +7,7 @@ import "./Workspace.css";
 
 interface IProps {
     appList: App[];
-    
+
 }
 
 export default class Workspace extends React.Component<IProps> {
@@ -15,6 +15,7 @@ export default class Workspace extends React.Component<IProps> {
     public state = {
         appList : this.props.appList,
     };
+    public zIndex = 1;
 
     public render() {
         return(
@@ -22,10 +23,11 @@ export default class Workspace extends React.Component<IProps> {
                 {
                     this.state.appList.map((item) => (
                         <AppWindow
-                            key={item.PID} 
-                            app={item} 
+                            key={item.PID}
+                            app={item}
                             deleteCallback={() => this.reload()}
-                            />
+                            zIndexSource={() => this.getZIndex()}
+                        />
                     ))
                 }
             </div>
@@ -36,6 +38,10 @@ export default class Workspace extends React.Component<IProps> {
         this.setState({
             appList: getAppList(),
         });
+        if (this.state.appList.length === 0) { this.zIndex = 1; }
     }
 
+    public getZIndex() {
+        return ++this.zIndex;
+    }
 }

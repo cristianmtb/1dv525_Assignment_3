@@ -4,18 +4,19 @@ interface IProps {
     initialX: number;
     initialY: number;
     initialZ: number;
-    limits?:{
-        top:number;
-        left:number;
-        bottom:number;
-        right:number;
-    }
+    zIndexSource: any;
+    limits?: {
+        top: number;
+        left: number;
+        bottom: number;
+        right: number;
+    };
 }
 
 export default class Draggable extends React.Component<IProps> {
 
     public myRef: any;
-    
+
     public state = {
         pos: { x: this.props.initialX, y: this.props.initialY, z: this.props.initialZ },
         dragging: false,
@@ -47,11 +48,13 @@ export default class Draggable extends React.Component<IProps> {
         if (e.button !== 0) { return; }
         const pos = e.target.getBoundingClientRect();
         this.setState({
-
             dragging: true,
             rel: {
                 x: e.pageX - pos.left,
                 y: e.pageY - pos.top,
+            },
+            pos: {
+                z: this.props.zIndexSource(),
             },
         });
         e.stopPropagation();
@@ -70,6 +73,7 @@ export default class Draggable extends React.Component<IProps> {
             pos: {
                 x: e.pageX - this.state.rel.x,
                 y: e.pageY - this.state.rel.y,
+                z: this.state.pos.z,
             },
         });
         e.stopPropagation();

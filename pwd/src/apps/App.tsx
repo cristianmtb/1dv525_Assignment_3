@@ -8,13 +8,14 @@ import LiveChat from "./liveChat/LiveChat";
 interface IProps {
     app: App;
     deleteCallback: any;
+    zIndexSource: any;
 }
 export default class AppWindow extends React.Component<IProps> {
     public render() {
         switch (this.props.app.appID) {
             case 1:
                 return (
-                    <Draggable initialX={0} initialY={0} initialZ={8}>
+                    <Draggable initialX={0} initialY={0} initialZ={this.props.zIndexSource()} zIndexSource={this.props.zIndexSource}>
                         <div className="w">
                             <div className="AppWindow">
                                 <div className="TitleBar">
@@ -29,7 +30,7 @@ export default class AppWindow extends React.Component<IProps> {
                 );
             case 2:
                 return (
-                    <Draggable initialX={0} initialY={0} initialZ={2}>
+                    <Draggable initialX={0} initialY={0} initialZ={this.props.zIndexSource()} zIndexSource={this.props.zIndexSource}>
                         <div className="AppWindow">
                             <div className="TitleBar">
                                 <button onClick={() => this.close()}>X</button>
@@ -42,7 +43,7 @@ export default class AppWindow extends React.Component<IProps> {
                 );
             case 3:
                 return (
-                    <Draggable initialX={0} initialY={0} initialZ={1}>
+                    <Draggable initialX={0} initialY={0} initialZ={this.props.zIndexSource()} zIndexSource={this.props.zIndexSource}>
                         <div className="AppWindow">
                             <div className="TitleBar">
                                 <button onClick={() => this.close()}>X</button>
@@ -55,7 +56,7 @@ export default class AppWindow extends React.Component<IProps> {
                 );
             case 4:
                 return (
-                    <Draggable initialX={0} initialY={0} initialZ={3}>
+                    <Draggable initialX={0} initialY={0} initialZ={this.props.zIndexSource()} zIndexSource={this.props.zIndexSource}>
                         <div className="AppWindow">
                             <div className="TitleBar">
                                 <button onClick={() => this.close()}>X</button>
