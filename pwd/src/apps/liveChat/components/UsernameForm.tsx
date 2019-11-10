@@ -17,7 +17,6 @@ export default class UsernameForm extends React.Component<IProps> {
     }
 
     public handleChange(event: any) {
-        console.log(this.state);
         this.setState({ value: event.target.value });
     }
 

@@ -3,6 +3,7 @@ import App from "../models/App";
 import { closeApp } from "../utils/AppList";
 import Draggable from "../utils/Draggable";
 import "./App.css";
+import HttpPets from "./httpPets/HttpPets";
 import LiveChat from "./liveChat/LiveChat";
 import MemoryGame from "./memoryGame/MemoryGame";
 
@@ -70,36 +71,14 @@ export default class AppWindow extends React.Component<IProps> {
                     >
                         <div className="AppWindow">
                             <div className="TitleBar">
-                                <text className="title">Cat Pictures!</text>
+                                <div className="title">HTTP Pets</div>
                                 <div className="closeDiv">
                                     <button className="closeBtn" onClick={() => this.close()}>
                                         <i className="fas fa-times"/></button>
                                 </div>
                             </div>
                             <div className="Content">
-                                App3
-                            </div>
-                        </div>
-                    </Draggable>
-                );
-            case 4:
-                return (
-                    <Draggable
-                        initialX={0}
-                        initialY={0}
-                        initialZ={this.props.zIndexSource()}
-                        zIndexSource={this.props.zIndexSource}
-                    >
-                        <div className="AppWindow">
-                            <div className="TitleBar">
-                                <text className="title">Live Chat</text>
-                                <div className="closeDiv">
-                                    <button className="closeBtn" onClick={() => this.close()}>
-                                        <i className="fas fa-times"/></button>
-                                </div>
-                            </div>
-                            <div className="Content">
-                                App4
+                                <HttpPets/>
                             </div>
                         </div>
                     </Draggable>

@@ -18,8 +18,8 @@ export default class Draggable extends React.Component<IProps> {
     public myRef: any;
 
     public state = {
-        pos: { x: this.props.initialX, y: this.props.initialY, z: this.props.initialZ },
         dragging: false,
+        pos: { x: this.props.initialX, y: this.props.initialY, z: this.props.initialZ },
         rel: {
             x: 0,
             y: 0,
@@ -45,25 +45,26 @@ export default class Draggable extends React.Component<IProps> {
     }
 
     public onMouseDown(e: any) {
-        if(e.target.localName === "button" || e.target.localName === "textarea"
-        || e.target.localName === "img") {
+        if (e.target.localName === "button" || e.target.localName === "textarea"
+        || e.target.localName === "img" || e.target.localName === "input" || e.target.localName === "select") {
             this.setState({
                 pos: {
                     z: this.props.zIndexSource(),
                 },
-            })
-            return;}
+            });
+            return; }
         if (e.button !== 0) { return; }
         const pos = e.target.getBoundingClientRect();
         this.setState({
             dragging: true,
+            pos: {
+                z: this.props.zIndexSource(),
+            },
             rel: {
                 x: e.pageX - pos.left,
                 y: e.pageY - pos.top,
             },
-            pos: {
-                z: this.props.zIndexSource(),
-            },
+
         });
         e.stopPropagation();
     }
@@ -92,7 +93,12 @@ export default class Draggable extends React.Component<IProps> {
             <div
                 ref={this.myRef}
                 onMouseDown={this.onMouseDown}
-                style={{position: "absolute", left: this.state.pos.x + "px", top: this.state.pos.y + "px", zIndex: this.state.pos.z }}
+                style={{
+                    left: this.state.pos.x + "px",
+                    position: "absolute",
+                    top: this.state.pos.y + "px",
+                    zIndex: this.state.pos.z,
+                }}
             >
                 {this.props.children}
             </div>

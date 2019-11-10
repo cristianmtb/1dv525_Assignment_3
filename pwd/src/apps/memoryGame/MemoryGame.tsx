@@ -1,24 +1,24 @@
 import React from "react";
 import Brick from "./components/Brick";
-import "./MemoryGame.css"
+import "./MemoryGame.css";
 
 export default class MemoryGame extends React.Component {
 
-    previousBrick: any;
-    brickArray: number[] = new Array<number>();
-    numberOfPairs: number = 0;
-    numberOfCorrectPairs: number = 0;
-    timesclicked = 0;
+    public previousBrick: any;
+    public brickArray: number[] = new Array<number>();
+    public numberOfPairs: number = 0;
+    public numberOfCorrectPairs: number = 0;
+    public timesclicked = 0;
 
     public state = {
-        started: false,
         finished: false,
+        maxCorrectPairs: 0,
+        started: false,
         tilesPerRow: 2,
-        maxCorrectPairs:0,
     };
 
     constructor(props: any) {
-        super(props)
+        super(props);
         this.brickClick = this.brickClick.bind(this);
     }
 
@@ -50,62 +50,65 @@ export default class MemoryGame extends React.Component {
             <div className="game-board" >
                 {
                     this.brickArray.map((item, index) => (
-                        <Brick key={index} image={item} tilesPerRow={this.state.tilesPerRow} clickCallback={this.brickClick} />
+                        <Brick
+                            key={index}
+                            image={item}
+                            tilesPerRow={this.state.tilesPerRow}
+                            clickCallback={this.brickClick} />
                     ))
                 }
                 <div>
-                <button onClick={()=>this.restart()}>restart</button>
+                <button onClick={() => this.restartGame()}>restart</button>
                 </div>
             </div>
         );
     }
 
-    private brickClick(successStateCallback: any, number: number) {
+    private brickClick(successStateCallback: any, brickNumber: number) {
         this.timesclicked ++;
-        if(this.timesclicked > 2) successStateCallback(false);
+        if (this.timesclicked > 2) { successStateCallback(false); }
         if (this.previousBrick == null) {
             this.previousBrick = {
                 callBack: successStateCallback,
-                number: number,
-            }
+                number: brickNumber,
+            };
         } else {
-            setTimeout(() => this.compare(successStateCallback, number), 1000);
+            setTimeout(() => this.checkPair(successStateCallback, brickNumber), 1000);
         }
-
     }
 
-    private compare(successStateCallback: any, number: number) {
+    private checkPair(successStateCallback: any, brickNumber: number) {
         this.numberOfPairs++;
-        if (this.previousBrick.number === number) {
+        if (this.previousBrick.number === brickNumber) {
             this.numberOfCorrectPairs++;
             this.previousBrick.callBack(true);
             successStateCallback(true);
             if (this.numberOfCorrectPairs === this.state.maxCorrectPairs) {
                 this.setState({
                     finished: true,
-                })
+                });
             }
         } else {
             this.previousBrick.callBack(false);
             successStateCallback(false);
         }
         this.timesclicked = 0;
-        this.previousBrick = null; 
+        this.previousBrick = null;
     }
 
-    private startGame(nrOfRows:number, tilesPerRow: number) {
+    private startGame(nrOfRows: number, tilesPerRow: number) {
         let i = 1;
-        for (i; i <= tilesPerRow * nrOfRows /2; i++) {
-            let num = Math.floor(Math.random() * Math.floor(8)) + 1
+        for (i; i <= tilesPerRow * nrOfRows / 2; i++) {
+            const num = Math.floor(Math.random() * Math.floor(8)) + 1;
             this.brickArray.push(num);
             this.brickArray.push(num);
         }
         this.shuffle();
         this.setState({
-            finished:false,
+            finished: false,
+            maxCorrectPairs: tilesPerRow * nrOfRows / 2,
             started: true,
-            maxCorrectPairs:tilesPerRow * nrOfRows /2,
-            tilesPerRow: tilesPerRow
+            tilesPerRow,
         });
     }
 
@@ -115,18 +118,18 @@ export default class MemoryGame extends React.Component {
                 <h1>You Won!</h1>
                 Number of pair you selected: {this.numberOfPairs}.
                 <div>
-                    <button onClick={()=>this.restart()}>restart</button>
+                    <button onClick={() => this.restartGame()}>restart</button>
                 </div>
             </div>
         );
     }
 
-    private restart() {
+    private restartGame() {
         this.brickArray = new Array<number>();
         this.setState({
-            finished:false,
+            finished: false,
             started: false,
-        })
+        });
     }
 
     private shuffle() {

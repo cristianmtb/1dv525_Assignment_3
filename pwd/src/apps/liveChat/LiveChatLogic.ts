@@ -2,13 +2,12 @@ import Message from "./models/Message";
 
 export default class LiveChatLogic {
     public socket: WebSocket;
-    public apiKey: String = "eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd";
-    public username: String;
+    public apiKey: string = "eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd";
+    public username: string;
     public receiveCallback: any;
     public messageList: Message[] = new Array<Message>();
 
     public constructor(receiveCallback: any) {
-        console.log("hehe");
         this.socket = new WebSocket("ws://vhost3.lnu.se:20080/socket/");
         this.receiveCallback = receiveCallback;
         this.username = this.loadUserName();
@@ -16,13 +15,13 @@ export default class LiveChatLogic {
         this.messageList.push(new Message("test", "test"));
     }
 
-    public send(message: String) {
+    public send(message: string) {
         const data = {
-            type: "message",
             channel: "",
-            username: this.username,
             data: message,
             key: this.apiKey,
+            type: "message",
+            username: this.username,
         };
         this.socket.send(JSON.stringify(data));
     }
@@ -31,7 +30,7 @@ export default class LiveChatLogic {
         return this.username;
     }
 
-    public setUserName(username: String) {
+    public setUserName(username: string) {
         this.saveUserName(username);
         this.username = this.loadUserName();
     }
@@ -53,7 +52,7 @@ export default class LiveChatLogic {
         if (username == null) { return ""; } else { return JSON.parse(username); }
     }
 
-    private saveUserName(username: String) {
+    private saveUserName(username: string) {
         window.localStorage.setItem("username", JSON.stringify(username));
     }
 }

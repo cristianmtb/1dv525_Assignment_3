@@ -19,7 +19,6 @@ export default class MessageSend extends React.Component<IProps, IState> {
     }
 
     public handleChange(event: any) {
-        console.log(this.state);
         this.setState({ message: event.target.value });
     }
 

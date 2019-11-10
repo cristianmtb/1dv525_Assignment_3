@@ -14,9 +14,8 @@ export default class Taskbar extends React.Component<IProps> {
         return(
             <div className="taskbar">
                 <button onClick={() => this.openApp(1)}><i className="fa fa-comments"/></button>
-                <button onClick={() => this.openApp(2)}>Memory game</button>
+                <button onClick={() => this.openApp(2)}>Mem</button>
                 <button onClick={() => this.openApp(3)}>Cats</button>
-                <button onClick={() => this.openApp(4)}>henlo fren</button>
             </div>
         );
     }
