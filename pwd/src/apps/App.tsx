@@ -1,9 +1,10 @@
 import React from "react";
 import App from "../models/App";
-import {closeApp} from "../utils/AppList";
+import { closeApp } from "../utils/AppList";
 import "./App.css";
-import Draggable from "./Draggable";
+import Draggable from "../utils/Draggable";
 import LiveChat from "./liveChat/LiveChat";
+import MemoryGame from "./memoryGame/MemoryGame";
 
 interface IProps {
     app: App;
@@ -19,7 +20,10 @@ export default class AppWindow extends React.Component<IProps> {
                         <div className="w">
                             <div className="AppWindow">
                                 <div className="TitleBar">
-                                    <button onClick={() => this.close()} >X</button>
+                                    <text className="title">Live Chat</text>
+                                    <div className="closeBtn">
+                                        <button onClick={() => this.close()}>X</button>
+                                    </div>
                                 </div>
                                 <div className="Content">
                                     <LiveChat />
@@ -33,10 +37,13 @@ export default class AppWindow extends React.Component<IProps> {
                     <Draggable initialX={0} initialY={0} initialZ={this.props.zIndexSource()} zIndexSource={this.props.zIndexSource}>
                         <div className="AppWindow">
                             <div className="TitleBar">
-                                <button onClick={() => this.close()}>X</button>
+                                <text className="title">Memory Game</text>
+                                <div className="closeBtn">
+                                    <button onClick={() => this.close()}>X</button>
+                                </div>
                             </div>
                             <div className="Content">
-                                App2
+                                <MemoryGame/>
                             </div>
                         </div>
                     </Draggable>
@@ -46,7 +53,10 @@ export default class AppWindow extends React.Component<IProps> {
                     <Draggable initialX={0} initialY={0} initialZ={this.props.zIndexSource()} zIndexSource={this.props.zIndexSource}>
                         <div className="AppWindow">
                             <div className="TitleBar">
-                                <button onClick={() => this.close()}>X</button>
+                                <text className="title">Cat Pictures!</text>
+                                <div className="closeBtn">
+                                    <button onClick={() => this.close()}>X</button>
+                                </div>
                             </div>
                             <div className="Content">
                                 App3
@@ -59,7 +69,10 @@ export default class AppWindow extends React.Component<IProps> {
                     <Draggable initialX={0} initialY={0} initialZ={this.props.zIndexSource()} zIndexSource={this.props.zIndexSource}>
                         <div className="AppWindow">
                             <div className="TitleBar">
-                                <button onClick={() => this.close()}>X</button>
+                                <text className="title">Live Chat</text>
+                                <div className="closeBtn">
+                                    <button onClick={() => this.close()}>X</button>
+                                </div>
                             </div>
                             <div className="Content">
                                 App4
