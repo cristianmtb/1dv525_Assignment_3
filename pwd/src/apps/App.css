@@ -15,6 +15,7 @@
     justify-content: flex-start;
     background:rgb(39, 39, 39);
 }
+
 .Content{
     padding:5px;
     min-height:37vh;
@@ -22,9 +23,22 @@
     width:20vw;
     background-color: #333332;
 }
-
+.closeDiv{
+    margin-left:auto;
+}
 .closeBtn{
-    margin-left:auto
+    height:3vh;
+    width:3vh;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.closeBtn:hover{
+    background-color: #4a0000;
 }
 
 .title{

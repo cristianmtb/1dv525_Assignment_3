@@ -2,9 +2,8 @@ import React from "react";
 import UsernameForm from "./components/UsernameForm";
 import "./LiveChat.css";
 import LiveChatLogic from "./LiveChatLogic";
-
-import MessageListView from "./components/MessagListView";
 import MessageSend from "./components/MessageSend";
+import MessageListView from "./components/MessagListView";
 
 export default class LiveChat extends React.Component {
 
@@ -22,8 +21,9 @@ export default class LiveChat extends React.Component {
     }
 
     public render() {
-        if (this.state.username === "") { return <UsernameForm setUsernameCallback={this.setUserName} />; }
-        else {
+        if (this.state.username === "") { 
+            return <UsernameForm setUsernameCallback={this.setUserName} />; 
+        } else {
             return (
                 <div>
                     <MessageListView messageList={this.state.messageList}></MessageListView>
@@ -35,11 +35,11 @@ export default class LiveChat extends React.Component {
 
     public receiveMessage() {
        this.setState({
-           messageList:this.chat.getMessageList(),
-       })
+           messageList: this.chat.getMessageList(),
+       });
     }
 
-    public sendMessage(message:String) {
+    public sendMessage(message: string) {
         this.chat.send(message);
     }
 
@@ -49,7 +49,7 @@ export default class LiveChat extends React.Component {
         });
     }
 
-    private setUserName(username: String) {
+    private setUserName(username: string) {
         this.chat.setUserName(username);
         this.getUserName();
     }

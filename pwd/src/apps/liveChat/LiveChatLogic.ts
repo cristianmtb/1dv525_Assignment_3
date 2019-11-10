@@ -17,13 +17,13 @@ export default class LiveChatLogic {
     }
 
     public send(message: String) {
-        let data = {
-            type:"message",
-            channel:"",
-            username:this.username,
-            data:message,
-            key:this.apiKey,
-        }
+        const data = {
+            type: "message",
+            channel: "",
+            username: this.username,
+            data: message,
+            key: this.apiKey,
+        };
         this.socket.send(JSON.stringify(data));
     }
 

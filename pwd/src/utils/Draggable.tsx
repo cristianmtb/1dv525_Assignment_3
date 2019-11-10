@@ -45,6 +45,14 @@ export default class Draggable extends React.Component<IProps> {
     }
 
     public onMouseDown(e: any) {
+        if(e.target.localName === "button" || e.target.localName === "textarea"
+        || e.target.localName === "img") {
+            this.setState({
+                pos: {
+                    z: this.props.zIndexSource(),
+                },
+            })
+            return;}
         if (e.button !== 0) { return; }
         const pos = e.target.getBoundingClientRect();
         this.setState({

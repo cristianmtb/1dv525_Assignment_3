@@ -16,13 +16,19 @@ export default class AppWindow extends React.Component<IProps> {
         switch (this.props.app.appID) {
             case 1:
                 return (
-                    <Draggable initialX={0} initialY={0} initialZ={this.props.zIndexSource()} zIndexSource={this.props.zIndexSource}>
+                    <Draggable
+                        initialX={0}
+                        initialY={0}
+                        initialZ={this.props.zIndexSource()}
+                        zIndexSource={this.props.zIndexSource}
+                    >
                         <div className="w">
                             <div className="AppWindow">
                                 <div className="TitleBar">
                                     <text className="title">Live Chat</text>
-                                    <div className="closeBtn">
-                                        <button onClick={() => this.close()}>X</button>
+                                    <div className="closeDiv">
+                                        <button className="closeBtn" onClick={() => this.close()}>
+                                            <i className="fas fa-times"/></button>
                                     </div>
                                 </div>
                                 <div className="Content">
@@ -34,28 +40,40 @@ export default class AppWindow extends React.Component<IProps> {
                 );
             case 2:
                 return (
-                    <Draggable initialX={0} initialY={0} initialZ={this.props.zIndexSource()} zIndexSource={this.props.zIndexSource}>
+                    <Draggable
+                        initialX={0}
+                        initialY={0}
+                        initialZ={this.props.zIndexSource()}
+                        zIndexSource={this.props.zIndexSource}
+                    >
                         <div className="AppWindow">
                             <div className="TitleBar">
-                                <text className="title">Memory Game</text>
-                                <div className="closeBtn">
-                                    <button onClick={() => this.close()}>X</button>
+                                <div className="title">Memory Game</div>
+                                <div className="closeDiv">
+                                    <button className="closeBtn" onClick={() => this.close()}>
+                                        <i className="fas fa-times"/></button>
                                 </div>
                             </div>
                             <div className="Content">
-                                <MemoryGame/>
+                                <MemoryGame />
                             </div>
                         </div>
                     </Draggable>
                 );
             case 3:
                 return (
-                    <Draggable initialX={0} initialY={0} initialZ={this.props.zIndexSource()} zIndexSource={this.props.zIndexSource}>
+                    <Draggable
+                        initialX={0}
+                        initialY={0}
+                        initialZ={this.props.zIndexSource()}
+                        zIndexSource={this.props.zIndexSource}
+                    >
                         <div className="AppWindow">
                             <div className="TitleBar">
                                 <text className="title">Cat Pictures!</text>
-                                <div className="closeBtn">
-                                    <button onClick={() => this.close()}>X</button>
+                                <div className="closeDiv">
+                                    <button className="closeBtn" onClick={() => this.close()}>
+                                        <i className="fas fa-times"/></button>
                                 </div>
                             </div>
                             <div className="Content">
@@ -66,12 +84,18 @@ export default class AppWindow extends React.Component<IProps> {
                 );
             case 4:
                 return (
-                    <Draggable initialX={0} initialY={0} initialZ={this.props.zIndexSource()} zIndexSource={this.props.zIndexSource}>
+                    <Draggable
+                        initialX={0}
+                        initialY={0}
+                        initialZ={this.props.zIndexSource()}
+                        zIndexSource={this.props.zIndexSource}
+                    >
                         <div className="AppWindow">
                             <div className="TitleBar">
                                 <text className="title">Live Chat</text>
-                                <div className="closeBtn">
-                                    <button onClick={() => this.close()}>X</button>
+                                <div className="closeDiv">
+                                    <button className="closeBtn" onClick={() => this.close()}>
+                                        <i className="fas fa-times"/></button>
                                 </div>
                             </div>
                             <div className="Content">

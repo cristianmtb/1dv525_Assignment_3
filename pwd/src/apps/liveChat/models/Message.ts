@@ -1,9 +1,9 @@
 export default class Message {
-    public username: String;
-    public body: String;
-    public time: String;
+    public username: string;
+    public body: string;
+    public time: string;
 
-    constructor(username: String, body: String) {
+    constructor(username: string, body: string) {
         this.username = username;
         this.body = body;
         const date = new Date();

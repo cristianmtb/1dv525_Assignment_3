@@ -3,7 +3,7 @@
     max-width: 3%;
     min-height: 100%;
     min-width: 3%;
-    background-color: darkblue;
+    background-color: #1c1b1b;
     flex-direction: row;
 }
 .start-button{

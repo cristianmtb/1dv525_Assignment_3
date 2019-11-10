@@ -3,19 +3,19 @@ import React from "react";
 interface IProps {
     sendCallback: any;
 }
-interface IState{
-    message:string
+interface IState {
+    message: string;
 }
 export default class MessageSend extends React.Component<IProps, IState> {
 
     constructor(props: IProps) {
         super(props);
         this.state = {
-            message:""
-        }
+            message: "",
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        
+
     }
 
     public handleChange(event: any) {

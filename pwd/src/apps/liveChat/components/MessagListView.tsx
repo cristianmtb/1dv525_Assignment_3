@@ -13,7 +13,7 @@ export default class MessageListView extends React.Component<IProps> {
             <div className="message-list">
                 {
                     this.props.messageList.map((item) => (
-                        <MessageView 
+                        <MessageView
                             key={i++}
                             message={item}/>
                     ))
