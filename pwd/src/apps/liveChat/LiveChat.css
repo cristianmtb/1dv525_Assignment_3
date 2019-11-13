@@ -6,6 +6,7 @@
     min-height:30vh;
     max-height:30vh;
     overflow-y: scroll;
+    background-color: rgb(60 , 60, 60);
 }
 
 .message{
@@ -21,6 +22,7 @@
     flex-direction: row;
     align-items: flex-end;
     justify-content: flex-end;
+    font-size: calc(2px + 1vmin);
 }
 .message-body{
     color:white;
@@ -29,7 +31,7 @@
     hyphens: auto;
 }
 
-.send-form{
+.send-div{
     height:7vh;
     width:20vw;
     display:flex;
@@ -38,7 +40,18 @@
     justify-content: flex-end;
 }
 
+.send-form{
+    display:flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
 textarea{
-    width:15vw;
+    width:14vw;
+    height:5vh;
+    resize: none;
+}
+.submit-btn{
     height:5vh;
 }

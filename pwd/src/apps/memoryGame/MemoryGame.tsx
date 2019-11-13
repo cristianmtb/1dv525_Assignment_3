@@ -31,7 +31,14 @@ export default class MemoryGame extends React.Component {
     private startScreen() {
         return (
             <div className="start-screen">
-                Press the button to start
+                <p>
+                    Memory, also known as Concentration is a card game in which all of the cards are laid face 
+                    down on a surface and two cards are flipped face up over each turn. The object of the game 
+                    is to turn over pairs of matching cards
+                </p>
+                <p>
+                    To start playing select a board size:
+                </p>
                 <button onClick={() => this.startGame(2, 2)}>
                     Start Game 2x2
                 </button>
@@ -58,14 +65,14 @@ export default class MemoryGame extends React.Component {
                     ))
                 }
                 <div>
-                <button onClick={() => this.restartGame()}>restart</button>
+                    <button onClick={() => this.restartGame()}>restart</button>
                 </div>
             </div>
         );
     }
 
     private brickClick(successStateCallback: any, brickNumber: number) {
-        this.timesclicked ++;
+        this.timesclicked++;
         if (this.timesclicked > 2) { successStateCallback(false); }
         if (this.previousBrick == null) {
             this.previousBrick = {
@@ -104,6 +111,8 @@ export default class MemoryGame extends React.Component {
             this.brickArray.push(num);
         }
         this.shuffle();
+        this.numberOfCorrectPairs = 0;
+        this.numberOfPairs = 0;
         this.setState({
             finished: false,
             maxCorrectPairs: tilesPerRow * nrOfRows / 2,
@@ -126,6 +135,8 @@ export default class MemoryGame extends React.Component {
 
     private restartGame() {
         this.brickArray = new Array<number>();
+        this.numberOfCorrectPairs = 0;
+        this.numberOfPairs = 0;
         this.setState({
             finished: false,
             started: false,

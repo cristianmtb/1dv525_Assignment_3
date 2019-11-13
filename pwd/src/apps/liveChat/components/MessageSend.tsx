@@ -2,6 +2,7 @@ import React from "react";
 
 interface IProps {
     sendCallback: any;
+    deleteMessages: any
 }
 interface IState {
     message: string;
@@ -24,17 +25,24 @@ export default class MessageSend extends React.Component<IProps, IState> {
 
     public handleSubmit(event: any) {
         this.props.sendCallback(this.state.message);
+        this.setState({message:""})
         event.preventDefault();
     }
 
     public render() {
         return (
-            <form onSubmit={this.handleSubmit} >
-                <div className="send-form">
-                <textarea value={this.state.message} onChange={this.handleChange} />
-                <input type="submit" value="Submit" className="submit-btn" />
-                </div>
-            </form>
+            <div className="send-div">
+
+                <form onSubmit={this.handleSubmit} >
+                    <div className="send-form">
+                        <textarea value={this.state.message} onChange={this.handleChange} />
+                        <input type="submit" value="Send" className="submit-btn" />
+                    </div>
+                </form>
+                <button onClick={() => this.props.deleteMessages()}>
+                    <i className="far fa-trash-alt"></i>
+                </button>
+            </div>
         );
     }
 }

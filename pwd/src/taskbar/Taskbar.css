@@ -6,7 +6,21 @@
     background-color: #1c1b1b;
     flex-direction: row;
 }
-.start-button{
+
+.appIcon{
     height:5%;
     width:100%;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    margin-top:1px;
+    margin-bottom:5px;
+    color: white;
+}
+.appIcon:hover{
+    background-color: #333332;
+    color: #1c1b1b;
 }

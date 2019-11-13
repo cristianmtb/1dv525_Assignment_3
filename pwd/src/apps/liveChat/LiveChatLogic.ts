@@ -12,7 +12,6 @@ export default class LiveChatLogic {
         this.receiveCallback = receiveCallback;
         this.username = this.loadUserName();
         this.socket.addEventListener("message", (event) => this.receive(event));
-        this.messageList.push(new Message("test", "test"));
     }
 
     public send(message: string) {
@@ -54,5 +53,9 @@ export default class LiveChatLogic {
 
     private saveUserName(username: string) {
         window.localStorage.setItem("username", JSON.stringify(username));
+    }
+
+    public cleanChat(){
+        this.messageList = new Array<Message>();
     }
 }

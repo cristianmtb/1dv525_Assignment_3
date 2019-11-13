@@ -18,6 +18,7 @@ export default class LiveChat extends React.Component {
         super(props);
         this.setUserName = this.setUserName.bind(this);
         this.sendMessage = this.sendMessage.bind(this);
+        this.cleanChat = this.cleanChat.bind(this);
     }
 
     public render() {
@@ -27,7 +28,7 @@ export default class LiveChat extends React.Component {
             return (
                 <div>
                     <MessageListView messageList={this.state.messageList}></MessageListView>
-                    <MessageSend sendCallback={this.sendMessage}></MessageSend>
+                    <MessageSend sendCallback={this.sendMessage} deleteMessages={this.cleanChat}/>
                 </div>
             );
         }
@@ -52,6 +53,13 @@ export default class LiveChat extends React.Component {
     private setUserName(username: string) {
         this.chat.setUserName(username);
         this.getUserName();
+    }
+
+    private cleanChat(){
+        this.chat.cleanChat();
+        this.setState ({
+            messageList:this.chat.getMessageList(),
+        })
     }
 
 }
