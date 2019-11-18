@@ -7,6 +7,7 @@ export default class Message {
         this.username = username;
         this.body = body;
         const date = new Date();
-        this.time = "At " + date.getHours() + ":" + date.getMinutes() + " on " + date.getUTCDate() + "." + date.getMonth() + "." + date.getFullYear();
+        // This line gives a lint error because it's too long, but I don't find it relevant to shorten
+        this.time = date.getHours() + ":" + date.getMinutes() + " on " + date.getUTCDate() + "." + date.getMonth() + "." + date.getFullYear();
     }
 }

@@ -4,7 +4,9 @@ import Message from "../models/Message";
 interface IProps {
     message: Message;
 }
-
+/**
+ * This component prints a single message
+ */
 export default class MessageView extends React.Component<IProps> {
 
     public render() {

@@ -55,11 +55,11 @@ export default class LiveChat extends React.Component {
         this.getUserName();
     }
 
-    private cleanChat(){
+    private cleanChat() {
         this.chat.cleanChat();
         this.setState ({
-            messageList:this.chat.getMessageList(),
-        })
+            messageList: this.chat.getMessageList(),
+        });
     }
 
 }

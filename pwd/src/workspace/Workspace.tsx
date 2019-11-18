@@ -10,6 +10,13 @@ interface IProps {
 
 }
 
+/**
+ *  This component is responsible for rendering on AppWindow for each app instance
+ *  open in the appList it receives as a prop from the desktop.
+ *  When an app is closed the callback is called in order to rerender this component without the app
+ *  Also here is where the z index originates from. In most modern browser the maximum z index is 2147483647 so
+ *  it should not cause problems
+ */
 export default class Workspace extends React.Component<IProps> {
 
     public state = {

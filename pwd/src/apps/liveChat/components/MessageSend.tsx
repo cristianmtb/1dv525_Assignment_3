@@ -2,11 +2,15 @@ import React from "react";
 
 interface IProps {
     sendCallback: any;
-    deleteMessages: any
+    deleteMessages: any;
 }
 interface IState {
     message: string;
 }
+
+/**
+ * This component is the form to send messages
+ */
 export default class MessageSend extends React.Component<IProps, IState> {
 
     constructor(props: IProps) {
@@ -25,7 +29,7 @@ export default class MessageSend extends React.Component<IProps, IState> {
 
     public handleSubmit(event: any) {
         this.props.sendCallback(this.state.message);
-        this.setState({message:""})
+        this.setState({message: ""});
         event.preventDefault();
     }
 

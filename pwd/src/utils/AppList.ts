@@ -1,3 +1,8 @@
+/*
+ *  This module is a utilitary app list. It holds the global list of app and
+    functions to access it, to open an app and to close and app
+ */
+
 import App from "../models/App";
 
 const appList: App[] = new Array<App>();

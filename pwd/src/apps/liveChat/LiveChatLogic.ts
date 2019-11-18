@@ -1,5 +1,8 @@
 import Message from "./models/Message";
-
+/**
+ * This helper class takes care of the logic of the Live chat.
+ * Here is where the web socket lives.
+ */
 export default class LiveChatLogic {
     public socket: WebSocket;
     public apiKey: string = "eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd";
@@ -38,6 +41,14 @@ export default class LiveChatLogic {
         return this.messageList;
     }
 
+    public cleanChat() {
+        this.messageList = new Array<Message>();
+    }
+
+    /**
+     * On a received message it adds the message to the list and then call the callback given
+     *  by the Live Chat component
+     */
     private receive(event: any) {
         const message = JSON.parse(event.data);
         if (message.type === "message") {
@@ -46,6 +57,9 @@ export default class LiveChatLogic {
         }
     }
 
+    /**
+     * The username is stored in the localstorage of the browser
+     */
     private loadUserName() {
         const username = window.localStorage.getItem("username");
         if (username == null) { return ""; } else { return JSON.parse(username); }
@@ -53,9 +67,5 @@ export default class LiveChatLogic {
 
     private saveUserName(username: string) {
         window.localStorage.setItem("username", JSON.stringify(username));
-    }
-
-    public cleanChat(){
-        this.messageList = new Array<Message>();
     }
 }

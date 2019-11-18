@@ -12,6 +12,10 @@ interface IProps {
     deleteCallback: any;
     zIndexSource: any;
 }
+/**
+ * This just renders the draggable and the applications, doesn't have any other functionality
+ * The switch case bellow sometimes gets flagged with lint error: "==" instead "==="
+ */
 export default class AppWindow extends React.Component<IProps> {
     public render() {
         switch (this.props.app.appID) {

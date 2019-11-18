@@ -4,6 +4,12 @@ import { getAppList } from "../utils/AppList";
 import Workspace from "../workspace/Workspace";
 import "./Desktop.css";
 
+/*
+ * This component renders the Workspace (the one who "owns" the app instances) and the Taskbar
+   (where the app icons are).
+ * It also offers the app list to the Workspace and forms a bridge between the Workspace and the Taskbar
+ */
+
 export default class Desktop extends React.Component {
     public state = {
         appList: getAppList(),

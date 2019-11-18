@@ -32,8 +32,8 @@ export default class MemoryGame extends React.Component {
         return (
             <div className="start-screen">
                 <p>
-                    Memory, also known as Concentration is a card game in which all of the cards are laid face 
-                    down on a surface and two cards are flipped face up over each turn. The object of the game 
+                    Memory, also known as Concentration is a card game in which all of the cards are laid face
+                    down on a surface and two cards are flipped face up over each turn. The object of the game
                     is to turn over pairs of matching cards
                 </p>
                 <p>
@@ -71,6 +71,11 @@ export default class MemoryGame extends React.Component {
         );
     }
 
+    /**
+     * When a card/brick is clicked, this function is called (from inside the brick object)
+     * It then procceses if a card is selected already or not.
+     * If 2 cards were selected it checks the pair.
+     */
     private brickClick(successStateCallback: any, brickNumber: number) {
         this.timesclicked++;
         if (this.timesclicked > 2) { successStateCallback(false); }
@@ -80,29 +85,50 @@ export default class MemoryGame extends React.Component {
                 number: brickNumber,
             };
         } else {
-            setTimeout(() => this.checkPair(successStateCallback, brickNumber), 1000);
+            this.checkPair(successStateCallback, brickNumber);
         }
     }
-
+    /**
+     * This method checks if the pair has two of the same cards
+     * If yes, it calls a functions with true that hides the cards.
+     * If they are not the same it call the callback function with false, which means the
+     * cards turn face down again. It calls the two functions with a delay so the player
+     * can see the cards in question.
+     *
+     * Known bug: 1 - if a click happens at the same time with the execution of the timer it will result in a crash
+     *                still not sure how to solve it.
+     *            2 - sometimes the timers will run after the component already unmounted.
+     *                however it causes no functionality problems
+     *
+     */
     private checkPair(successStateCallback: any, brickNumber: number) {
         this.numberOfPairs++;
         if (this.previousBrick.number === brickNumber) {
             this.numberOfCorrectPairs++;
-            this.previousBrick.callBack(true);
-            successStateCallback(true);
+            setTimeout(() => {
+                this.previousBrick.callBack(true);
+                successStateCallback(true);
+                this.previousBrick = null;
+            }, 700);
             if (this.numberOfCorrectPairs === this.state.maxCorrectPairs) {
                 this.setState({
                     finished: true,
                 });
             }
         } else {
-            this.previousBrick.callBack(false);
-            successStateCallback(false);
+            setTimeout(() => {
+                this.previousBrick.callBack(false);
+                successStateCallback(false);
+                this.previousBrick = null;
+            }, 700);
         }
         this.timesclicked = 0;
-        this.previousBrick = null;
+
     }
 
+    /**
+     * Forms the card deck, shuffles the deck and prepare all the other values to start
+     */
     private startGame(nrOfRows: number, tilesPerRow: number) {
         let i = 1;
         for (i; i <= tilesPerRow * nrOfRows / 2; i++) {
