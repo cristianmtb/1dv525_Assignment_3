@@ -30,6 +30,7 @@ export default class AppWindow extends React.Component<IProps> {
                         <div className="w">
                             <div className="AppWindow">
                                 <div className="TitleBar">
+                                    <i className="fas fa-comment-alt"/>
                                     <text className="title">Live Chat</text>
                                     <div className="closeDiv">
                                         <button className="closeBtn" onClick={() => this.close()}>
@@ -53,6 +54,7 @@ export default class AppWindow extends React.Component<IProps> {
                     >
                         <div className="AppWindow">
                             <div className="TitleBar">
+                                <i className="fas fa-chess-board"></i>
                                 <div className="title">Memory Game</div>
                                 <div className="closeDiv">
                                     <button className="closeBtn" onClick={() => this.close()}>
@@ -75,6 +77,7 @@ export default class AppWindow extends React.Component<IProps> {
                     >
                         <div className="AppWindow">
                             <div className="TitleBar">
+                                <i className="fas fa-paw"/>
                                 <div className="title">HTTP Pets</div>
                                 <div className="closeDiv">
                                     <button className="closeBtn" onClick={() => this.close()}>

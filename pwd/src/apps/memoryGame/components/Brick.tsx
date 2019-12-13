@@ -6,7 +6,7 @@ interface IProps {
     clickCallback: any;
 }
 
-export default class Brick extends React.Component <IProps> {
+export default class Brick extends React.Component<IProps> {
 
     public state = {
         dissapear: false,
@@ -21,25 +21,27 @@ export default class Brick extends React.Component <IProps> {
     public render() {
         if (this.state.dissapear === true) {
             return (
-                <div style={{width: 35 / this.props.tilesPerRow + "vh", height: 35 / this.props.tilesPerRow + "vh" }}>
+                <div style={{ width: 35 / this.props.tilesPerRow + "vh", height: 35 / this.props.tilesPerRow + "vh" }}>
                 </div>
             );
         }
         if (this.state.hidden === true) {
             return (
-                <div onClick={(event) => this.clicked(event)}
-                    style={{width: 35 / this.props.tilesPerRow + "vh", height: 35 / this.props.tilesPerRow + "vh" }}>
+                <button
+                    onClick={(event) => this.clicked(event)}
+                    className="brick-btn"
+                    style={{ width: 35 / this.props.tilesPerRow + "vh", height: 35 / this.props.tilesPerRow + "vh" }}>
                     <img src={require("./image/0.png")}
-                    style={{width: 35 / this.props.tilesPerRow + "vh", height: 35 / this.props.tilesPerRow + "vh" }}
-                    alt=""/>
-                </div>
+                        style={{ width: 35 / this.props.tilesPerRow + "vh", height: 35 / this.props.tilesPerRow + "vh" }}
+                        alt="Could not load" />
+                </button>
             );
         }
         return (
-            <div style={{width: 35 / this.props.tilesPerRow + "vh", height: 35 / this.props.tilesPerRow + "vh"}}>
+            <div style={{ width: 35 / this.props.tilesPerRow + "vh", height: 35 / this.props.tilesPerRow + "vh" }}>
                 <img src={require(`./image/${this.props.image}.png`)}
-                style={{width: 35 / this.props.tilesPerRow + "vh", height: 35 / this.props.tilesPerRow + "vh" }}
-                alt=""/>
+                    style={{ width: 35 / this.props.tilesPerRow + "vh", height: 35 / this.props.tilesPerRow + "vh" }}
+                    alt="" />
             </div>
         );
     }

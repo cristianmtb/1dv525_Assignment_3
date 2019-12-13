@@ -17,12 +17,17 @@
     height: 0;
 }
 .brick-btn{
+    padding:0;
+    margin:0;
     background-color: Transparent;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     border: none;
     cursor:pointer;
     overflow: hidden;
-    outline:none;
+    outline:none; 
+}
+.brick-btn:focus{
+    outline:red solid 3px;
 }
 .brick-break-group{
     display:flex;

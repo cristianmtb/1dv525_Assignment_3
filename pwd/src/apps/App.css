@@ -43,4 +43,5 @@
 
 .title{
     font-size: calc(10px + 1vmin);
+    padding-left:10px
 }
